@@ -196,9 +196,10 @@ nav{
             @include textSet (none, 28, none);
         }
         .selector_wrapper{
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             justify-content: flex-start;
             overflow-x: scroll;
+            padding-bottom: 8px;
             &::-webkit-scrollbar {
                 display:none;
             }
