@@ -1,0 +1,429 @@
+@import './_CSSReset', '_variable','./_mixin';
+
+html,body{
+    max-width: 100vw;
+    width: 100%;
+    font-family: "Noto Sans TC";
+    a{
+        text-decoration: none;
+    }
+}
+
+.background{
+    position: relative;
+    z-index: -1;
+    .shape_yellow{
+        @include bg_figure_set(0px, auto, 0px, 851px, 768px, "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/f70f00178a7f0baa31e9c01634303d8562cfe93a/chatTalker_images/bg_home.svg")
+    }
+    .circle_cyan{
+        @include bg_figure_set(589px, 0px, auto, 134px, 360px, "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/f70f00178a7f0baa31e9c01634303d8562cfe93a/chatTalker_images/ball01.svg");
+        background-position: right;
+    }
+    .circle_light_cyan{
+        @include bg_figure_set(1694px, auto, 0px, 210px, 310px, "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/f70f00178a7f0baa31e9c01634303d8562cfe93a/chatTalker_images/ball02.svg");
+    }
+    .circle_light_yellow{
+        @include bg_figure_set(2640px, 50px, auto, 150px, 150px, "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/f70f00178a7f0baa31e9c01634303d8562cfe93a/chatTalker_images/ball03.svg");
+        background-size: contain;
+    }
+    @media screen and (max-width: 375px) {
+        .shape_yellow{
+            top:391px;
+            left: 20px;
+            width: 334px;
+            height: 245px;
+            background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/f70f00178a7f0baa31e9c01634303d8562cfe93a/chatTalker_images/bg_home_sm.svg");
+        }
+        .circle_cyan{
+            top: 743px;
+            width: 46px;
+            height:126px;
+        }
+        .circle_light_cyan{
+            top: 1661px;
+            width: 88px;
+            height:135px;
+        }
+        .circle_light_yellow{
+            top: 4827px;
+            left: 0px;
+            width: 77px;
+            height:135px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: right;
+        }
+    }
+}
+
+.container{
+    padding: 0px 140px;
+    @media screen and (max-width: 375px){
+        padding: 0px 20px;
+    }
+}
+
+@import "./topBtn";
+
+@import "./_nav.scss";
+nav{
+    margin-bottom: 30px;
+}
+
+.banner{
+    @include flex(row, space-between, center);
+    margin-bottom: 217px;
+    .text_wrapper{
+        max-width: 451px;
+    }
+    .service_name{
+        @include textSet($primary-color, 18, bold);
+    }
+    .slogan{
+        margin: 8px auto 16px auto;
+        p{
+            @include textSet($secondary-color, 48, bold);
+        }
+    }
+    .service_intro{
+        @include textSet($secondary-color, 20, none);
+    }
+    .image{
+        width: 532px;
+        height: 534px;
+    }
+    @media screen and (max-width: 375px){
+        flex-direction: column;
+        margin-bottom: 60px;
+        padding-bottom: 32px;
+        .text_wrapper{
+            .service_name{
+                @include textSet(none, 16, none);
+            }
+            .slogan{
+                p{
+                    @include textSet(none, 32, none)
+                }
+            }
+            .service_intro{
+                @include textSet(none, 16, none);
+                margin-bottom: 32px;
+            }
+        }
+        .image{
+            width: 344px;
+            height:312px;
+            background-repeat: no-repeat;
+            background-position: bottom;
+        }
+    }
+}
+
+.platform_context_wrapper{
+    margin-bottom: 100px;
+    h2{
+        @include textSet ($secondary-color, 32, bold);
+        text-align: center;
+        margin-bottom: 48px;
+    }
+    .item_wrapper{
+        @include flex(row, space-around, center);
+    }
+    .item{
+        @include flex(column, center, center);
+        img{
+            width: 90px;
+            height: 90px;
+        }
+        .item_name{
+            @include textSet($secondary-color, 24, bold);
+            margin: 24px auto;
+        }
+        .item_intro{
+            @include textSet($tertiary-color, 16, normal);
+            text-align: center;
+        }
+    }
+    @media screen and (max-width: 375px){
+        margin-bottom: 60px;
+        h2{
+            @include textSet(none, 28, none);
+            margin-bottom: 32px;
+        }
+        .item_wrapper{
+            flex-direction: column;
+            .item{
+                margin-bottom: 24px;
+                img{
+                    width: 60px;
+                    height: 60px;
+                }
+                .item_name{
+                    @include textSet(none, 18, normal);
+                    margin: 16px auto;
+                }
+            }
+        }
+    }
+}
+
+.feature_context_wrapper{
+    margin-bottom: 100px;
+    h2{
+        @include textSet ($secondary-color, 32, bold);
+        text-align: center;
+        margin-bottom: 16px;
+    }
+    .feature_intro{
+        @include textSet($secondary-color, 20 ,normal);
+        text-align: center;
+        margin-bottom: 48px;
+    }
+    .item_wrapper{
+        @include flex(row, space-around, flex-start);
+    }
+    .item{
+        @include flex(column, flex-start, center);
+        @include box-shadow;
+        border-radius: 12px;
+        img{
+            width: 260px;
+            height:260px;
+            border-radius: 12px 12px 0px 0px;
+        }
+        .text_wrapper{
+            @include flex(column, flex-start, center);
+            width: 260px;
+            height: 128px;
+            background-color: #FFFFFF;
+            border-radius: 0px 0px 12px 12px;
+            .item_name{
+                margin-top: 16px;
+                @include textSet($primary-color, 16, bold);
+            }
+            div{
+                margin-top: 16px;
+                .item_intro{
+                    @include textSet($secondary-color, 16, normal);
+                    text-align: center;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 375px) {
+        margin-bottom: 60px;
+        h2{
+            @include textSet(none, 28, none);
+            margin-bottom: 16px;
+        }
+        .feature_intro{
+            @include textSet(none, 16, none);
+            margin-bottom: 32px;
+        }
+        .item_wrapper{
+            flex-direction: column;
+            align-items: center;
+            .item{
+                margin-bottom: 24px
+            }
+        }
+    }
+}
+
+.function_context_wrapper{
+    @include flex(row, normal, center);
+    margin-bottom: 100px;
+    .item_wrapper{
+        @include flex(row, normal, center);
+        flex-wrap: wrap;
+        max-width: 554px;
+        margin-right: 90px;
+        .item{
+            @include flex(column, normal, flex-start);
+            @include box-shadow;
+            width: 166px;
+            height: 200px;
+            border-radius: 12px;
+            padding: 32px 32px 48px 32px;
+            margin: 0px 47px 28px 0px;
+            .icon_bg{
+                @include flex(row, center, center);
+                @include box-shadow;
+                border-radius: 43px;
+                width: 86px;
+                height: 86px;
+                margin-bottom: 24px;
+                img{
+                    width: 50px;
+                    height: 51px;
+                }
+            }
+            .item_name{
+                @include textSet($secondary-color, 18, bold);
+                margin-bottom: 16px;
+            }
+            .item_intro{
+                @include textSet($secondary-color, 16, normal);
+            }
+        }
+    }
+    .function_text_wrapper{
+        .h2_wrapper{
+            @include textSet ($secondary-color, 32, bold);
+            text-align: left;
+            margin-bottom: 16px;
+        }
+        .intro_wrapper{
+            @include textSet($secondary-color, 18, normal);
+            margin-bottom: 24px;
+        }
+        a{
+            @include btn($primary-color);
+            display: inline-block;
+        }
+    }
+    @media screen and (max-width: 375px) {
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-bottom: 60px;
+        .item_wrapper{
+            flex-direction: column;
+            align-items: center;
+            margin: 0 auto;
+            .item{
+                margin:0px;
+                margin-bottom: 24px;
+            }
+        }
+        .function_text_wrapper{
+            @include flex(column, center, center);
+            margin-bottom: 32px;
+            text-align: center;
+            .h2_wrapper{
+                @include textSet(none, 28, none);
+            }
+            .intro_wrapper{
+                margin-bottom: 16px;
+            }
+        }
+    }
+}
+
+.swiper{
+    margin-top: 0px;
+    padding-right: 16px!important;
+    h2{
+        @include textSet ($secondary-color, 32, bold);
+        text-align: center;
+        margin-bottom: 104px;
+    }
+    .swiper-wrapper{
+        @include flex(row, space-between, center);
+        margin-bottom: 24px;
+        padding-left: 8px;
+        .swiper-slide{
+            position: relative;
+            .user_pic{
+                position: absolute;
+                top: -56px;
+                left: 32px;
+                width: 80px;
+                height: 80px;
+                border-radius: 40px;
+            }
+            .text_wrapper{
+                background-color: #FFFFFF;
+                border-radius: 12px;
+                @include box-shadow;
+                padding: 48px 32px 24px 32px;
+                .comment{
+                    @include textSet($secondary-color, 16, normal);
+                    text-align: justify;
+                }
+                hr{
+                    margin: 24px auto;
+                }
+                .user_wrapper{
+                    @include flex(row, space-between, flex-end);
+                    .user_detail{
+                        p{
+                            @include textSet(none, 16, none)
+                        }
+                        .company_name{
+                            font-weight: bold;
+                        }
+                    }
+                    .stars{
+                        img{
+                            width: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .comment_pagination_wrapper{
+        @include flex(row, center, center);
+        margin-bottom: 100px;
+        .indicator{
+            background-color: #DDDDDD;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            margin: 0px 4px;
+            &.active{
+                background-color: #FFD153;
+                width: 16px;
+                border-radius: 50px;
+            }
+        }
+    }
+    @media screen and (max-width: 375px) {
+        h2{
+            @include textSet(none, 28, none)
+        }
+        .swiper-wrapper{
+            .swiper-slide{
+                .text_wrapper{
+                    padding: 48px 16px 16px 16px;
+                    hr{
+                        margin: 16px auto;
+                    }
+                }
+            }
+        }
+        .comment_pagination_wrapper{
+            margin-bottom: 60px;
+        }
+    }
+}
+
+footer{
+    width: 100%;
+    background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/f70f00178a7f0baa31e9c01634303d8562cfe93a/chatTalker_images/home_footer.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    div{
+        @include flex(column, center, center);
+        h2{
+            @include textSet ($secondary-color, 32, bold);
+            text-align: center;
+            margin: 260px auto 48px auto;
+        }
+        a{
+            @include btn($primary-color);
+            padding: 12px 32px;
+            margin-bottom: 100px;
+        }
+    }
+    @import "./_copyright";
+    @media screen and (max-width: 375px) {
+        background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/f70f00178a7f0baa31e9c01634303d8562cfe93a/chatTalker_images/footer_sm.svg");
+        div{
+            h2{
+                @include textSet (none, 24, none);
+                margin: 293px auto 24px auto;
+            }
+        }
+    }
+}

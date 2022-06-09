@@ -1,0 +1,321 @@
+@import './_CSSReset', '_variable','./_mixin';
+
+html,body{
+    width: 100vw;
+    font-family: "Noto Sans TC";
+    a{
+        text-decoration: none;
+    }
+}
+
+.background{
+    position: relative;
+    z-index: -1;
+    .top_shape{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 495px;
+        background-color: #F7F9FD;
+        border-radius: 0px 0px 0px 300px;
+    }
+    .banner_image{
+        @include bg_figure_set(0px, auto, 0px, 885px, 559px, "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/f70f00178a7f0baa31e9c01634303d8562cfe93a/chatTalker_images/banner.svg")
+    }
+    .circle_light_yellow{
+        @include bg_figure_set(876px, 0px, auto, 94px, 361px,"https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/f70f00178a7f0baa31e9c01634303d8562cfe93a/chatTalker_images/ball03.svg");
+        background-position: right;
+    }
+    @media screen and (max-width: 375px) {
+        .top_shape{
+            top: 84px;
+            height: 495px;
+            border-radius: 0px 0px 0px 150px;
+        }
+        .banner_image{
+            background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/f70f00178a7f0baa31e9c01634303d8562cfe93a/chatTalker_images/banner_sm.svg");
+            top: 84px;
+            width: 375px;
+            height: 495px;
+        }
+    }
+}
+
+@import "./topBtn";
+
+@import "./_nav";
+
+nav{
+    margin-bottom: 92px;
+    @media screen and (max-width: 375px) {
+        margin-bottom: 48px;
+    }
+}
+
+.banner_text_wrapper{
+    margin:0px auto 280px 139px;
+    padding: 0px 20px;
+    h1{
+        font-size: 48px;
+        line-height: 70px;
+        font-weight: bold;
+    }
+    p{
+        font-size: 16px;
+        line-height: 24px;
+    }
+    @media screen and (max-width: 375px) {
+        margin:0px auto 421px auto;
+        h1{
+            @include textSet(none, 32, none);
+            margin-bottom: 16px;
+        }
+        p{
+            @include textSet(none, 16, none)
+        }
+    }
+}
+
+.container{
+    padding: 0px 231px;
+    margin: 0 auto;
+    @media screen and (max-width: 375px) {
+        padding: 0px 20px;
+    }
+}
+
+.plan_context_wrapper{
+    h2{
+        @include textSet ($secondary-color, 32, bold);
+        text-align: center;
+        margin-bottom: 48px;
+    }
+    .selector_wrapper{
+        @include flex(row, center, center);
+        margin-bottom: 64px;
+        .selector{
+            @include btn(#FFFFFF);
+            @include textSet($primary-color, 18, none);
+            border: 1px $primary-color solid;
+            border-radius: 27px;
+            margin: 0px 8px;
+            padding: 12px 32px;
+            text-align: center;
+            &.active{
+                background-color: $primary-color;
+                color:#FFFFFF
+            }
+            &:hover{
+                @media (hover:hover){
+                    background-color: $primary-color;
+                    color:#FFFFFF
+                }
+            }
+        }
+    }
+    .plan_detail_wrapper{
+        @include flex(row, center, center);
+        margin-bottom: 100px;
+        .detail_wrapper{
+            @include flex(column, center, center);
+            @include box-shadow;
+            max-width: 444px;
+            width: 100%;
+            border-radius: 12px;
+            background-color: #FFFFFF;
+            margin: 0px 10px;
+            h3{
+                @include textSet($secondary-color, 24,bold);
+                text-align: center;
+                width: 100%;
+                border-bottom: 1px #DDDDDD solid;
+                padding: 16px 0px;
+                margin-bottom: 32px;
+            }
+            .detail{
+                max-width: 392px;
+                width: 100%;
+                .intro{
+                    @include textSet($secondary-color, 16, none);
+                    text-align: center;
+                    margin-bottom: 32px;
+                }
+                .price_calculate{
+                    @include flex(row, space-between, center);
+                    max-width: 396px;
+                    width: 100%;
+                    margin-bottom: 32px;
+                    .user_num, .price_amount{
+                        @include flex(column, center, center);
+                        background-color: #F5F5F5;
+                        width: 169px;
+                        height: 108px;
+                        border-radius: 12px;
+                        p{
+                            margin-bottom: 8px;
+                        }
+                        p, span{
+                            @include textSet($secondary-color, 12, none);
+                        }
+                        .num{
+                            @include textSet(none, 32, none);
+                        }
+                    }
+                    .user_num{
+                        span{
+                            color: $primary-color;
+                        }
+                    }
+                    .equal{
+                        font-size: 29px;
+                        line-height: 42px;
+                    }
+                }
+                .feature_wrapper{
+                    align-self: flex-start;
+                    margin-bottom: 32px;
+                    li{
+                        @include flex (row, normal, flex-start);
+                        @include textSet(none, 16, none);
+                        margin-bottom: 16px;
+                    }
+                }
+            }
+            .btn{
+                @include btn($primary-color);
+                align-items: center;
+                display: inline-block;
+                padding: 12px 32px;
+                margin-bottom: 32px;
+            }
+        }
+    }
+    @media screen and (max-width: 375px) {
+        h2{
+            @include textSet (none, 28, none);
+        }
+        .selector_wrapper{
+            margin-bottom: 32px;
+            justify-content: flex-start;
+            overflow-x: scroll;
+            &::-webkit-scrollbar {
+                display:none;
+            }
+            .selector{
+                @include textSet(none, 16, none);
+                padding: 8px 16px;
+                margin: 0px 3px;
+                white-space: nowrap;
+            }
+        }
+        .plan_detail_wrapper{
+            flex-direction: column;
+            margin-bottom: 36px;
+            .detail_wrapper{
+                margin-bottom: 24px;
+                .detail{
+                    max-width: 303px;
+                    .price_calculate{
+                        margin-bottom: 27px;
+                        .user_num, .price_amount{
+                            width: 139px;
+                            height: 89px;
+                            .num{
+                                @include textSet(none, 28, none);
+                            }
+                        }
+                        .equal{
+                            @include textSet(none, 24, none)
+                        }
+                    }
+                    .feature_wrapper{
+                        margin-bottom: 24px;
+                        padding-bottom: 16px;
+                        li{
+                            @include textSet(none, 14, none);
+                            img{
+                                width: 16px;
+                                height: 14px;
+                                margin-right: 16px;
+                                
+                            }
+                        }
+                    }
+                    .btn{
+                        margin-bottom: 24px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.common_QA_wrapper{
+    width: 100%;
+    margin-bottom: 100px;
+    h2{
+        @include textSet ($secondary-color, 32, bold);
+        text-align: center;
+        margin-bottom: 48px;
+    }
+    .item_wrapper{
+        @include flex(column, space-between, center);
+        .item{
+            @include box-shadow;
+            border-radius: 12px;
+            padding: 16px 32px;
+            width: 100%;
+            margin-bottom: 16px;
+            .question_wrapper{
+                @include flex(row, space-between, center);
+                &.active{
+                    margin-bottom: 24px;
+                    .switch{
+                        background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/f70f00178a7f0baa31e9c01634303d8562cfe93a/chatTalker_images/icon_minus.svg");
+                    }
+                    .question{
+                        color: $primary-color;
+                        font-weight: bold;
+                    }
+                }
+                .question{
+                    @include textSet($secondary-color, 18, none);
+                }
+                .switch{
+                    width: 20px;
+                    height: 20px;
+                    background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/f70f00178a7f0baa31e9c01634303d8562cfe93a/chatTalker_images/icon_plus.svg");
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+            }
+            .answer{
+                display: none;
+                @include textSet($tertiary-color, 16, none);
+                line-height: 32px;
+            }
+        }
+    }
+    @media screen and (max-width: 375px) {
+        h2{
+            @include textSet(none, 28, none);
+            margin-bottom: 32px
+        }
+        .item_wrapper{
+            padding: 0px 20px;
+            .item{
+                padding: 16px;
+                .question_wrapper{
+                    .question{
+                        @include textSet(none, 16, none);
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer{
+    @import "./_copyright";
+}

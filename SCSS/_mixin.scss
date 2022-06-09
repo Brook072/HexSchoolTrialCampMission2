@@ -1,0 +1,79 @@
+@mixin btn($bg-color){
+    padding: 8px 32px;
+    color: #FFFFFF;
+    font-size: 16px;
+    background-color: $bg-color;
+    border: 1px $bg-color solid ;
+    border-radius: 22px;
+    &:hover{
+        box-shadow: 5px 5px #a9a9a9;
+        transition-duration: 0.2s;
+    }
+}
+
+@mixin bg_figure_set($top, $left, $right, $width, $height, $img_url){
+    position: absolute;
+    background-size: cover;
+    top: $top;
+    left: $left;
+    right: $right;
+    width: $width;
+    height: $height;
+    background-image: url($img_url);
+}
+
+@mixin flex($direction, $jc_type, $ai_type){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $jc_type;
+    align-items: $ai_type;
+}
+
+@mixin textSet($color, $size, $weight){
+    @if $color != "none"{
+        color: $color;
+    }
+    @if $weight != "none"{
+        font-weight: $weight;
+    }
+    @if $size == 12 {
+        font-size: 12px;
+        line-height: 17px;
+    }
+    @else if $size == 14 {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    @else if $size == 16 {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    @else if $size == 18 {
+        font-size: 18px;
+        line-height: 26px;
+    }
+    @else if $size == 20 {
+        font-size: 20px;
+        line-height: 29px;
+    }
+    @else if $size == 24 {
+        font-size: 24px;
+        line-height: 35px;
+    }
+    @else if $size == 28 {
+        font-size: 28px;
+        line-height: 32px;
+    }
+    @else if $size == 32 {
+        font-size: 32px;
+        line-height: 46px;
+    }
+    @else if $size == 48 {
+        font-size: 48px;
+        line-height: 70px;
+    }
+}
+
+@mixin box-shadow{
+    box-shadow: 0px 2px 10px #00000014;
+}

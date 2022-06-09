@@ -1,0 +1,18 @@
+nav{
+    @include flex(row, space-between, center);
+    padding: 24px 140px;
+    margin-bottom: 92px;
+    .logo{
+        height: 40px;
+    }
+    .nav_btn{
+        @include btn(#FF5D50);
+    }
+    @media screen and (max-width: 375px){
+        border-bottom: 2px #FFD153 solid;
+        padding: 24px 20px;
+        .logo{
+            height: 24px;
+        }
+    }
+}
