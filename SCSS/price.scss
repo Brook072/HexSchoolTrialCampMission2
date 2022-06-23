@@ -1,4 +1,11 @@
 @import './_CSSReset', '_variable','./_mixin';
+@import "./topBtn";
+@import "./_nav";
+@import "./_copyright";
+
+*{
+    box-sizing: border-box;
+}
 
 html,body{
     width: 100vw;
@@ -29,33 +36,31 @@ html,body{
     }
     @media screen and (max-width: 375px) {
         .top_shape{
-            top: 84px;
+            top: 74px;
             height: 495px;
             border-radius: 0px 0px 0px 150px;
         }
         .banner_image{
             background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/f70f00178a7f0baa31e9c01634303d8562cfe93a/chatTalker_images/banner_sm.svg");
-            top: 84px;
+            top: 74px;
             width: 375px;
             height: 495px;
         }
     }
 }
 
-@import "./topBtn";
-
-@import "./_nav";
-
 nav{
     margin-bottom: 92px;
-    @media screen and (max-width: 375px) {
+    .nav_btn{
+        @include textSet(none, 16, none);
+    }
+    @media screen and (max-width: 1120px) {
         margin-bottom: 48px;
     }
 }
 
 .banner_text_wrapper{
-    margin:0px auto 280px 139px;
-    padding: 0px 20px;
+    margin:0px auto 269px 139px;
     h1{
         font-size: 48px;
         line-height: 70px;
@@ -65,8 +70,9 @@ nav{
         font-size: 16px;
         line-height: 24px;
     }
-    @media screen and (max-width: 375px) {
+    @media screen and (max-width: 1120px) {
         margin:0px auto 421px auto;
+        padding: 0px 20px;
         h1{
             @include textSet(none, 32, none);
             margin-bottom: 16px;
@@ -78,22 +84,37 @@ nav{
 }
 
 .container{
-    padding: 0px 231px;
+    max-width: 1120px;
     margin: 0 auto;
-    @media screen and (max-width: 375px) {
-        padding: 0px 20px;
+    @media screen and (max-width: 1120px) {
+        max-width: 335px;
     }
 }
 
 .plan_context_wrapper{
+    width: 83.3%;
+    margin: 0 auto;
     h2{
         @include textSet ($secondary-color, 32, bold);
         text-align: center;
         margin-bottom: 48px;
+        @media screen and (max-width: 1120px) {
+            @include textSet (none, 28, none);
+        }
     }
     .selector_wrapper{
         @include flex(row, center, center);
-        margin-bottom: 64px;
+        margin-bottom: 59px;
+        padding-bottom: 5px;
+        overflow-x: scroll;
+        @media screen and (max-width: 1120px) {
+            margin-bottom: 24px;
+            justify-content: flex-start;
+            padding-bottom: 8px;
+            &::-webkit-scrollbar {
+                display:none;
+            }
+        }
         .selector{
             @include btn(#FFFFFF);
             @include textSet($primary-color, 18, none);
@@ -102,6 +123,13 @@ nav{
             margin: 0px 8px;
             padding: 12px 32px;
             text-align: center;
+            cursor: pointer;
+            @media screen and (max-width: 1120px) {
+                @include textSet(none, 16, none);
+                padding: 8px 16px;
+                margin: 0px 3px;
+                white-space: nowrap;
+            }
             &.active{
                 background-color: $primary-color;
                 color:#FFFFFF
@@ -115,16 +143,22 @@ nav{
         }
     }
     .plan_detail_wrapper{
-        @include flex(row, center, center);
+        @include flex(row, space-between, center);
         margin-bottom: 100px;
+        @media screen and (max-width: 1120px) {
+            flex-direction: column;
+            margin-bottom: 36px;
+        }
         .detail_wrapper{
-            @include flex(column, center, center);
             @include box-shadow;
-            max-width: 444px;
-            width: 100%;
+            width: 444px;
             border-radius: 12px;
             background-color: #FFFFFF;
-            margin: 0px 10px;
+            padding-bottom: 32px;
+            @media screen and (max-width: 1120px) {
+                margin-bottom: 24px;
+                width: 335px;
+            }
             h3{
                 @include textSet($secondary-color, 24,bold);
                 text-align: center;
@@ -134,32 +168,43 @@ nav{
                 margin-bottom: 32px;
             }
             .detail{
-                max-width: 392px;
-                width: 100%;
-                .intro{
+                padding-left: 29px;
+                padding-right: 23px;
+                @media screen and (max-width: 1120px) {
+                    padding: 0px 16px;
+                }
+            }
+            .intro{
                     @include textSet($secondary-color, 16, none);
                     text-align: center;
                     margin-bottom: 32px;
                 }
                 .price_calculate{
                     @include flex(row, space-between, center);
-                    max-width: 396px;
-                    width: 100%;
                     margin-bottom: 32px;
+                    @media screen and (max-width: 1120px) {
+                        margin-bottom: 27px;
+                    }
                     .user_num, .price_amount{
-                        @include flex(column, center, center);
                         background-color: #F5F5F5;
-                        width: 169px;
-                        height: 108px;
+                        padding: 24px 32px;
                         border-radius: 12px;
+                        @media screen and (max-width: 1120px) {
+                            padding: 16px 24px;
+                        }
                         p{
                             margin-bottom: 8px;
+                            text-align: center
                         }
                         p, span{
                             @include textSet($secondary-color, 12, none);
                         }
                         .num{
                             @include textSet(none, 32, none);
+                            line-height: 35px;
+                            @media screen and (max-width: 1120px) {
+                                @include textSet(none, 28, none);
+                            }
                         }
                     }
                     .user_num{
@@ -170,82 +215,44 @@ nav{
                     .equal{
                         font-size: 29px;
                         line-height: 42px;
+                        @media screen and (max-width: 1120px) {
+                            @include textSet(none, 24, none)
+                        }
                     }
                 }
                 .feature_wrapper{
-                    align-self: flex-start;
                     margin-bottom: 32px;
+                    @media screen and (max-width: 1120px) {
+                        margin-bottom: 24px;
+                        padding-bottom: 16px;
+                    }
                     li{
                         @include flex (row, normal, flex-start);
                         @include textSet(none, 16, none);
                         margin-bottom: 16px;
-                    }
-                }
-            }
-            .btn{
-                @include btn($primary-color);
-                align-items: center;
-                display: inline-block;
-                padding: 12px 32px;
-                margin-bottom: 32px;
-            }
-        }
-    }
-    @media screen and (max-width: 375px) {
-        h2{
-            @include textSet (none, 28, none);
-        }
-        .selector_wrapper{
-            margin-bottom: 24px;
-            justify-content: flex-start;
-            overflow-x: scroll;
-            padding-bottom: 8px;
-            &::-webkit-scrollbar {
-                display:none;
-            }
-            .selector{
-                @include textSet(none, 16, none);
-                padding: 8px 16px;
-                margin: 0px 3px;
-                white-space: nowrap;
-            }
-        }
-        .plan_detail_wrapper{
-            flex-direction: column;
-            margin-bottom: 36px;
-            .detail_wrapper{
-                margin-bottom: 24px;
-                .detail{
-                    max-width: 303px;
-                    .price_calculate{
-                        margin-bottom: 27px;
-                        .user_num, .price_amount{
-                            width: 139px;
-                            height: 89px;
-                            .num{
-                                @include textSet(none, 28, none);
-                            }
-                        }
-                        .equal{
-                            @include textSet(none, 24, none)
-                        }
-                    }
-                    .feature_wrapper{
-                        margin-bottom: 24px;
-                        padding-bottom: 16px;
-                        li{
+                        @media screen and (max-width: 1120px) {
                             @include textSet(none, 14, none);
-                            img{
+                        }
+                        img{
+                            margin-right: 12.94px;
+                            @media screen and (max-width: 1120px) {
                                 width: 16px;
                                 height: 14px;
                                 margin-right: 16px;
-                                
                             }
                         }
                     }
-                    .btn{
-                        margin-bottom: 24px;
-                    }
+                }
+            .btn{
+                @include btn($primary-color);
+                @include textSet(none, 18, none);
+                border-radius: 27px;
+                padding: 12px 32px;
+                width: 136px;
+                margin: 0 auto;
+                cursor: pointer;
+                @media screen and (max-width: 1120px) {
+                    margin-bottom: 24px;
                 }
             }
         }
@@ -253,7 +260,8 @@ nav{
 }
 
 .common_QA_wrapper{
-    width: 100%;
+    width: 83.3%;
+    margin: 0 auto;
     margin-bottom: 100px;
     h2{
         @include textSet ($secondary-color, 32, bold);
@@ -298,25 +306,19 @@ nav{
             }
         }
     }
-    @media screen and (max-width: 375px) {
+    @media screen and (max-width: 1120px) {
+        width: 100%;
         h2{
             @include textSet(none, 28, none);
             margin-bottom: 32px
         }
-        .item_wrapper{
-            padding: 0px 20px;
-            .item{
-                padding: 16px;
-                .question_wrapper{
-                    .question{
-                        @include textSet(none, 16, none);
-                    }
+        .item{
+            padding: 16px;
+            .question_wrapper{
+                .question{
+                    @include textSet(none, 16, none);
                 }
             }
         }
     }
-}
-
-footer{
-    @import "./_copyright";
 }
